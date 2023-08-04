@@ -483,8 +483,26 @@ pod install
 npx react-native run-ios
 
 # 깃허브에 있는 rn src안에 있는 소스 코드 복붙
-```
 
+# 모든 폴더에 있는 package="com.boshowpnwatplswwwe" ---> 생성된 프로젝트 이름으로 바꿔야함 ex)com.reactTest
+# 모든 폴더에 있는 target 'BoshowPnWatplswWWETests' ---> 생성된 프로젝트 이름으로 바꿔야함 ex)com.reactTest
+
+
+```
+> 프론트엔드 웹페이지 사이트 연결
+```
+//src/MyWebView.js에서 source에 제작한 프론트엔드 url 기입
+    <WebView
+      ref={webviewRef}
+      mixedContentMode={'compatibility'}
+      pullToRefreshEnabled={true}
+      startInLoadingState={true}
+      allowsBackForwardNavigationGestures={true}
+      originWhitelist={['https://*', 'http://*']}
+      source={{uri: 'http://boshowen.link/'}}
+      onNavigationStateChange={handleNavigationStateChange}
+    />
+```
 
 > 실행 방법
 
