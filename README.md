@@ -445,3 +445,124 @@ pm2 start ecosystem.config.js
 ```
 
 > 배포 완료
+
+
+<br />
+<br />
+
+## 옴니커머스 키값 수정
+
+<img width="1021" alt="image" src="https://github.com/ORIGINPNWAT/README/assets/86187456/9eb703b9-bb6a-452e-9294-9f640f501c46">
+
+```
+src > api > product > controllers > product.ts 에서 위에 있는 key값을 새로 받은 key값으로 변경 후 aws배포
+```
+
+
+<br />
+<br />
+
+## rn 패키징
+
+```
+npm uninstall -g react-native-cli
+brew install node
+brew install watchman
+brew tap homebrew/cask-versions
+brew install --cask zulu11
+brew tap AdoptOpenJDK/openjdk
+brew install --cask adoptopenjdk8
+rvm install "ruby-2.7.5"
+sudo gem install cocoapods
+
+## 프로젝트를 생성할 폴더로 이동 후 아래 명령어 실행
+npx react-native init nativeTest --template react-native-template-typescript
+cd nativeTest
+cd ios
+pod install
+npx react-native run-ios
+
+# 깃허브에 있는 rn src안에 있는 소스 코드 복붙
+```
+
+
+> 실행 방법
+
+```
+안드로이드 실행 : 1.npm run android
+아이폰 실행 : 1.cd ios/ pod install 2.react-native run-ios --simulator 'iPhone 14'
+```
+
+## 버그 잡기
+
+```
+yarn ios --simulator="iPhone 14"
+
+LaunchPackage.command가 터미널에서 문서를 열도록 허용되지 않았기 때문에 null을 열수 없습니다
+- (nodemodules/react-native/scripts)에 가서 launchPackager.command를 우클릭 후 "항상 터미널로 열기"
+
+react-native run-android
+에러시 root폴더에서
+ ->chmod 755 android/gradlew
+```
+
+```bash
+warn Failed to connect to development server using "adb reverse": spawnSync adb ENOENT
+info Starting the app...
+error Failed to start the app.
+Error: spawnSync adb ENOENT
+# 위 에러 뜬다면
+# 아래 설치
+brew install --cask android-platform-tools
+```
+
+
+
+## 어플 이름 바꾸기
+
+1. app.json 의 displayName 수정
+2. android/app/src/main/res/values/strings.xml 코드를 수정합니다.
+3. app_name 변수를 수동으로 변경해는 작업입니다. 변경하고 다시 코드 실행하면 앱이름 바뀌어 있습니다.
+
+```xml
+<resources>
+	<string name="app_name">새로운 앱 이름</string>
+</resources>
+```
+
+<br />
+
+## 어플 사진 바꾸기
+
+```bash
+http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=image&foreground.space.trim=1&foreground.space.pad=0&foreColor=rgba(96%2C%20125%2C%20139%2C%200)&backColor=rgb(255%2C%20255%2C%20255)&crop=0&backgroundShape=circle&effects=none&name=ic_launcher_round
+
+# 위 웹페이지에서 png다운 후 png파일 변경
+android/app/src/main/res
+  -mipmap-hdpi
+  -mipmap-mdpi
+  - ...
+```
+
+<br />
+
+## apk파일 추출
+
+- (1)
+
+```bash
+npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+```
+
+- (2)
+
+```bash
+npx react-native run-android
+```
+
+- (3) 끝
+
+```bash
+android/app/build/outputs/apk/debug 경로에 있는 app-debug.apk
+```
+
