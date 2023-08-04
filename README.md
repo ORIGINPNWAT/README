@@ -489,27 +489,7 @@ npx react-native run-ios
 
 
 ```
-> 프론트엔드 웹페이지 사이트 연결
-```
-//src/MyWebView.js에서 source에 제작한 프론트엔드 url 기입
-    <WebView
-      ref={webviewRef}
-      mixedContentMode={'compatibility'}
-      pullToRefreshEnabled={true}
-      startInLoadingState={true}
-      allowsBackForwardNavigationGestures={true}
-      originWhitelist={['https://*', 'http://*']}
-      source={{uri: 'http://boshowen.link/'}}
-      onNavigationStateChange={handleNavigationStateChange}
-    />
-```
 
-> 실행 방법
-
-```
-안드로이드 실행 : 1.npm run android
-아이폰 실행 : 1.cd ios/ pod install 2.react-native run-ios --simulator 'iPhone 14'
-```
 
 ## 버그 잡기
 
